@@ -7,6 +7,9 @@ const config = require('../knexfile')[environment];
 const promiseRouter = require('express-promise-router');
 const { Model } = require('objection');
 
+//imports routes
+const userRoute = require('./route/userRoute');
+
 // initialize knex
 const knex = Knex(config);
 
@@ -31,6 +34,9 @@ app.use(bodyParser.json())
   })
   .use(router)
   .set('json spaces', 2)
+
+    //use routes
+  .use('/user', userRoute)
 
   // handle errors
   .use((req, res, next) => {
