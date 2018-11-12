@@ -27,14 +27,11 @@ class userController extends baseController {
     return async (req, res) => {
       try {
         const id = req.params.id;
-        const row = await super.getIndividual(id);
+        const row = await super.getIndividual(userModel, id);
         res.status(200).send(row);
       }
       catch (error) {
-        //handle more exceptions
-        res.status(400).json({
-          error,
-        });
+        res.status(400).send(error);
       }
     }
   }
