@@ -1,5 +1,5 @@
 const lodash = require('lodash');
-class basController {
+class baseController {
   static async get(model) {
     return await model.query().skipUndefined()
   }
@@ -65,16 +65,13 @@ class basController {
 }
 function removeAdditionalProperties(model, data) {
   if(Array.isArray(data)){
-    const arrayWithoutAdditionalProperties = data.map((obj)=>{
+    data.map((obj)=>{
       return lodash.pick(obj, Object.keys(model.jsonSchema.properties));
     });
-    return arrayWithoutAdditionalProperties;
   }
-  //remove all the unnecessary properties
-
   return lodash.pick(data, Object.keys(model.jsonSchema.properties));
 }
 
 
-module.exports = basController;
+module.exports = baseController;
 //export transaction;

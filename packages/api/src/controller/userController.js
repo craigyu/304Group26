@@ -2,6 +2,7 @@ const { transaction, Model } = require('objection');
 const userModel = require('../model/userModel');
 const baseController = require('./baseController');
 
+
 class userController extends baseController {
 
   static addUser() {
@@ -43,7 +44,7 @@ class userController extends baseController {
       let trx;
       try {
         trx = await transaction.start(Model.knex());
-        const isDeleted = await super.del(userModel, req.params.id, trx);
+        const isDeleted = await super.delete(userModel, req.params.id, trx);
         await trx.commit();
         if (isDeleted) {
           res.sendStatus(200);
@@ -66,22 +67,18 @@ class userController extends baseController {
       let trx;
       try {
         trx = await transaction.start(Model.knex());
-
         const updated = await super.put(userModel, req.params.id, req.body, trx);
         await trx.commit();
-        if (!updated.length) {
+        if (!updated) {
           res.sendStatus(404);
         }
         else {
           res.status(200).send(updated);
         }
-
       }
       catch (error) {
         await trx.rollback();
-        res.status(400).json({
-          error,
-        });
+        res.status(400).send(error);
       }
     }
   }
