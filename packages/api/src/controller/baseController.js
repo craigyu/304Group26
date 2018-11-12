@@ -49,8 +49,7 @@ class baseController {
   }
 
   static async getByForeignKey(model, field, fieldId){
-    const data = await model.query().where(field, fieldId);
-    return data;
+    return await model.query().where(field, fieldId);
   }
 
   static async updateIndividualById(model, id, updatedLog, transaction=null){
