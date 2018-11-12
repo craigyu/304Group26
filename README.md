@@ -1,9 +1,9 @@
-#The Puny Budapest Hotel
+# The Puny Budapest Hotel
 
 ## Backend
-###Directory
+### Directory
 `cd packages/api`
-###Environment 
+### Environment 
 You will need: 
 * [Node.js](https://nodejs.org/en/download/)
 * [NPM](https://www.npmjs.com/get-npm)
@@ -13,7 +13,7 @@ You will need:
         * It should have a username `postgres` and a password `postgres`
     * You might want to get a database client to visualize and interact with the DB directly, one option is [Postico](https://eggerapps.at/postico/)
 
-###Setup
+### Setup
 * After `cd` into the directory run `npm install`
 * For DB migration and seeding:
     *  Migration `knex migrate:rollback && knex migrate:latest`, run this if there's no seed yet
@@ -24,6 +24,6 @@ You will need:
 ### Start the server
 `npm run start` or just `npm start`
 
-###MISC
+### MISC
 * Defining models -> [Objection.js](http://vincit.github.io/objection.js/)
 * Testing API -> [Postman](https://www.getpostman.com/) or w.e.
