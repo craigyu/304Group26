@@ -22,7 +22,7 @@ class Room extends Model {
                 room_id: { type: 'string' },
                 price: { type: 'number' },
                 max_guests: { type: 'number'},
-                bed_type: {type: 'string', enum["Twin", "Queen", "King", "Single"]},
+                bed_type: {type: 'string', enum: ["Twin", "Queen", "King", "Single"]},
                 availability: {type: 'boolean'},
                 pets_allowed: {type: 'boolean'},
             },

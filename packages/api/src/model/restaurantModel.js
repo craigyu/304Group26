@@ -21,7 +21,7 @@ class Restaurant extends Model {
             properties: {
                 amenity_id: { type: 'string' },
                 has_bar: { type: 'boolean' },
-                cuisine_type: { type: 'string', enum["Mexican", "Korean", "Cubano", "Venezulean", "Chinese", "American"] },
+                cuisine_type: { type: 'string', enum: ["Mexican", "Korean", "Cubano", "Venezulean", "Chinese", "American"] },
                 budget: { type: 'number' },
             },
         };

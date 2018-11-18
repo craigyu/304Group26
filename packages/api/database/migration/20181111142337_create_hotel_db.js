@@ -19,13 +19,13 @@ exports.up = async function(knex, Promise) {
           '"location" varchar(31) ) '),
 
       knex.schema.raw('CREATE TABLE "employee" ' +
-          '("user_id" uuid PRIMARY KEY REFERENCES users(id), ' +
+          '("user_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, ' +
           '"hotel_id" uuid REFERENCES hotel(hotel_id), ' +
           '"position" char(31), ' +
           '"wage" float(53) )' ),
     // create whatever table here, and dont forget it change/add it to the exports.down function at the bottom
       knex.schema.raw('CREATE TABLE "account" ' +
-          '("user_id" uuid PRIMARY KEY REFERENCES users(id), ' +
+          '("user_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, ' +
           '"username" varchar(31) not null, ' +
           '"password" varchar(31) not null )'),
 
@@ -65,11 +65,20 @@ exports.up = async function(knex, Promise) {
           '"has_class" bool default false, ' +
           '"has_cardio" bool default false )' ),
 
+    //add customer table
+    knex.schema.raw('CREATE TABLE "customer" ' +
+      '("user_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, ' +
+      '"expire_month" char(31), ' +
+      '"expire_year" char(31), ' +
+      '"card_number" char(31), ' +
+      '"cvc" char(31), ' +
+      '"payment_method" char(31))' ),
+
       //Reservation(reservation.id:Char,  user.id:Char, room.id:Char, hotel.id:Char,
       // isCheckedIn:Bool, isCheckedOut:Bool, has.breakfast:Bool, num.guests:Integer, checkOutDate:Char, checkInDate:char)
       knex.schema.raw('CREATE TABLE "reservation" ' +
-          '("res_id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(), ' +
-          '"user_id" uuid REFERENCES users(id), ' +
+          '("reservation_id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(), ' +
+          '"user_id" uuid REFERENCES users(id) ON DELETE SET NULL, ' +
           '"room" uuid REFERENCES room(room_id), ' +
           '"hotel" uuid REFERENCES hotel(hotel_id), ' +
           '"is_checked_in" bool default false, ' +
@@ -78,8 +87,6 @@ exports.up = async function(knex, Promise) {
           '"num_guests" int, ' +
           '"check_out_date" timestamptz not null, ' +
           '"check_in_date" timestamptz not null )' )
-
-
     ])
 
 };
@@ -96,6 +103,7 @@ exports.down = function(knex, Promise) {
       knex.schema.dropTable('employee'),
       knex.schema.dropTable('account'),
       knex.schema.dropTable('hotel'),
+      knex.schema.dropTable('customer'),
       knex.schema.dropTable('users'),
 
     ])

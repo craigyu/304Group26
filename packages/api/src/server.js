@@ -9,6 +9,16 @@ const { Model } = require('objection');
 
 //imports routes
 const userRoute = require('./route/userRoute');
+const customerRoute = require('./route/customerRoute');
+const spaRoute = require('./route/spaRoute');
+const roomRoute = require('./route/roomRoute');
+const restaurantRoute = require('./route/restaurantRoute');
+const reservationRoute = require('./route/reservationRoute');
+const hotelRoute = require('./route/hotelRoute');
+const gymRoute = require('./route/gymRoute');
+const employeeRoute = require('./route/employeeRoute');
+const amenityRoute = require('./route/amenityRoute');
+const accountRoute = require('./route/accountRoute');
 
 // initialize knex
 const knex = Knex(config);
@@ -37,6 +47,17 @@ app.use(bodyParser.json())
 
     //use routes
   .use('/user', userRoute)
+  .use('/customer', customerRoute)
+  .use('/spa', spaRoute)
+  .use('/room', roomRoute)
+  .use('/restaurant', restaurantRoute)
+  .use('/reservation', reservationRoute)
+  .use('/hotel', hotelRoute)
+  .use('/gym', gymRoute)
+  .use('/employee', employeeRoute)
+  .use('/amenity', amenityRoute)
+  .use('/account', accountRoute)
+
 
   // handle errors
   .use((req, res, next) => {
