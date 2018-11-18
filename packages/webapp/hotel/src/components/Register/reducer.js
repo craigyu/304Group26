@@ -1,4 +1,5 @@
-import { SET_IS_CUSTOMER } from './constants';
+import { SET_IS_CUSTOMER, } from './constants';
+import history from '../../history';
 
 const initialState = {
   is_customer: null,

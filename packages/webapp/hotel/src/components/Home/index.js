@@ -14,7 +14,7 @@ class Home extends Component {
   }
 
   componentDidMount(){
-    if(localStorage.getItem('isAuthenticated') === 'true'){
+    if(localStorage.getItem('isAuthenticated').toString() === 'true'){
       this.setState({
         isAuthenticated: true,
       })
@@ -27,7 +27,6 @@ class Home extends Component {
 
   login(){
     localStorage.setItem('isAuthenticated', 'true');
-    console.log('here');
     this.setState({
       isAuthenticated: true,
     })

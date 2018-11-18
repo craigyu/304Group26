@@ -10,9 +10,9 @@ class userController extends baseController {
       let trx;
       try {
         trx = await transaction.start(Model.knex());
-        await super.post(userModel ,req.body, trx);
+        const result = await super.postWithResponse(userModel, req.body, trx);
         await trx.commit();
-        res.sendStatus(201);
+        res.status(201).send(result);
       } catch (error) {
         //handle more exceptions
         await trx.rollback();

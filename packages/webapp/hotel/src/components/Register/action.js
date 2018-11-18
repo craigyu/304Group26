@@ -1,4 +1,5 @@
-import {SET_IS_CUSTOMER} from './constants'
+import {SET_IS_CUSTOMER,} from './constants'
+
 
 export const setIsCustomer = (is_customer) => {
   return {

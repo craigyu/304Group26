@@ -13,6 +13,7 @@ class Register extends Component {
     super(props);
     this.state = { is_customer: null };
     this.registerAccount = this.registerAccount.bind(this);
+    this.appendItem = this.appendItem.bind(this);
   }
 
   componentDidMount(){
@@ -21,9 +22,16 @@ class Register extends Component {
     // }
   }
 
-  registerAccount(is_customer){
+   appendItem = (is_customer) => new Promise((resolve, reject) => {
+    // do anything here
     this.props.dispatch(setIsCustomer(is_customer));
-    history.push('/register_account');
+    resolve();
+  });
+
+  registerAccount(is_customer){
+   this.appendItem(is_customer).then(()=>{
+     history.push('/register_account')
+   })
   }
 
 

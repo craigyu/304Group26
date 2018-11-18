@@ -1,1 +1,2 @@
 export const SET_IS_CUSTOMER = 'SET_IS_CUSTOMER';
+export const GO_REGISTER = 'GO_REGISTER';
