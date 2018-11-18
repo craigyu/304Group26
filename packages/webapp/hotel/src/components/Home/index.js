@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Button} from 'react-bootstrap';
-import styles from  './styles.scss'
+import styles from  './styles.scss';
 
 class Home extends Component {
   constructor(props) {
@@ -36,9 +36,9 @@ class Home extends Component {
   render() {
 
     return (
-      <div className={styles.container}>
+      <div>
         {!this.state.isAuthenticated &&
-        <div>
+        <div className={styles.container}>
           <h3>pleasae log in</h3>
           <Button bsStyle="primary" onClick={()=> this.login()}>log in</Button>
         </div>
