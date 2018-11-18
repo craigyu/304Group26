@@ -65,6 +65,10 @@ exports.up = async function(knex, Promise) {
           '"hasClass" bool default false, ' +
           '"hasCardio" bool default false )' ),
 
+      knex.schema.raw('CREATE TABlE "customers" ' +
+          '("user_id" uuid PRIMARY KEY REFERENCES users(id), ' +
+          '"paymentType" varchar(31) ) '),
+
       //Reservation(reservation.id:Char,  user.id:Char, room.id:Char, hotel.id:Char,
       // isCheckedIn:Bool, isCheckedOut:Bool, has.breakfast:Bool, num.guests:Integer, checkOutDate:Char, checkInDate:char)
       knex.schema.raw('CREATE TABLE "reservation" ' +
@@ -95,6 +99,7 @@ exports.down = function(knex, Promise) {
       knex.schema.dropTable('room'),
       knex.schema.dropTable('employees'),
       knex.schema.dropTable('account'),
+      knex.schema.dropTable('customers'),
       knex.schema.dropTable('hotel'),
       knex.schema.dropTable('users')
 
