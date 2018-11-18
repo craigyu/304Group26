@@ -10,6 +10,7 @@ exports.up = async function(knex, Promise) {
       '"email" text NOT NULL unique, ' +
       '"address" varchar(255), ' +
       '"is_customer" bool default true, ' +
+      '"password" varchar(31) not null, ' +
       '"created_at" timestamptz DEFAULT NOW(), ' +
       '"updated_at" timestamptz DEFAULT NOW())'),
 
@@ -24,10 +25,6 @@ exports.up = async function(knex, Promise) {
           '"position" char(31), ' +
           '"wage" float(53) )' ),
     // create whatever table here, and dont forget it change/add it to the exports.down function at the bottom
-      knex.schema.raw('CREATE TABLE "account" ' +
-          '("user_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, ' +
-          '"username" varchar(31) not null, ' +
-          '"password" varchar(31) not null )'),
 
       knex.schema.raw('CREATE TABLE "room" ' +
           '("room_id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(), ' +
@@ -101,7 +98,6 @@ exports.down = function(knex, Promise) {
       knex.schema.dropTable('amenity'),
       knex.schema.dropTable('room'),
       knex.schema.dropTable('employee'),
-      knex.schema.dropTable('account'),
       knex.schema.dropTable('hotel'),
       knex.schema.dropTable('customer'),
       knex.schema.dropTable('users'),

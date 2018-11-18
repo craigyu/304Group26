@@ -12,3 +12,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.default-container{
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  color: #fff;
+  background: #373635;
+  padding: 0 10%;
+  flex-direction: column;
+}
+.default-container h1{
+  font-size: 6em;
+  font-weight: bold;
+}
+
+.default-container h2{
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.default-container h3{
+  font-size: 2em;
+  font-weight: bold;
+}

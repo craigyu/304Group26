@@ -23,11 +23,10 @@ class hotelController extends baseController {
     };
   }
 
-  static getHotelByID() {
+  static getHotel() {
     return async (req, res) => {
       try {
-        const id = req.params.hotel_id;
-        const row = await super.getIndividual(hotelModel, id);
+        const row = await super.get(hotelModel);
         res.status(200).send(row);
       }
       catch (error) {

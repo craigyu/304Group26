@@ -22,7 +22,7 @@ class Users extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['first_name', 'last_name', 'email', 'is_customer'],
+      required: ['first_name', 'last_name', 'email', 'is_customer', 'password'],
 
       properties: {
         id: { type: 'string' },
@@ -33,7 +33,7 @@ class Users extends Model {
         is_customer: { type: 'boolean'},
         created_at: { type : 'date-time' },
         updated_at: { type : 'date-time' },
-
+        password: { type: 'string', minLength: 5, maxLength: 31 },
       },
     };
   }

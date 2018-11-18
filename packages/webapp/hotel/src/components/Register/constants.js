@@ -1,0 +1,1 @@
+export const SET_IS_CUSTOMER = 'SET_IS_CUSTOMER';

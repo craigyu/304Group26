@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const hotelController = require('../controller/hotelController');
 
-router.get('/:id',  hotelController.getHotelByID());
+router.get('/',  hotelController.getHotel());
 
 router.post('/', hotelController.addHotel());
 

@@ -18,7 +18,6 @@ const hotelRoute = require('./route/hotelRoute');
 const gymRoute = require('./route/gymRoute');
 const employeeRoute = require('./route/employeeRoute');
 const amenityRoute = require('./route/amenityRoute');
-const accountRoute = require('./route/accountRoute');
 
 // initialize knex
 const knex = Knex(config);
@@ -56,7 +55,6 @@ app.use(bodyParser.json())
   .use('/gym', gymRoute)
   .use('/employee', employeeRoute)
   .use('/amenity', amenityRoute)
-  .use('/account', accountRoute)
 
 
   // handle errors
