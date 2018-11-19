@@ -6,7 +6,7 @@ import history from '../../history'
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { isAuthenticated: false };
+    this.goPage = this.goPage.bind(this);
   }
 
   componentDidMount(){
@@ -15,6 +15,9 @@ class NavBar extends Component {
     // }
   }
 
+  goPage(path){
+    history.push(path);
+  }
 
 
   render() {
@@ -29,26 +32,16 @@ class NavBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} href="#">
-              Link
+            <NavItem eventKey={1} onClick={()=>this.goPage('/customer')} >
+              Customer
             </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link
+            <NavItem eventKey={2} onClick={()=>this.goPage('/employee')} >
+              Employee
             </NavItem>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">
-              Link Right
-            </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link Right
+            <NavItem eventKey={1} onClick={()=>this.goPage('/booking')} >
+              Book Room
             </NavItem>
           </Nav>
         </Navbar.Collapse>

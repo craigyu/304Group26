@@ -20,6 +20,11 @@ class Customer extends Component {
     this.updateAccount = this.updateAccount.bind(this);
     this.getHotel = this.getHotel.bind(this);
     this.getHotelName = this.getHotelName.bind(this);
+    this.goBook=this.goBook.bind(this);
+  }
+
+  goBook(){
+    history.push('/booking')
   }
 
   getReservation(user_id){
@@ -78,10 +83,11 @@ class Customer extends Component {
     const user_id = localStorage.getItem('user_id');
     if(user_id){
       this.setState({user_id});
+      this.getHotel();
       this.getCustomer(user_id);
       this.getAccount(user_id);
       this.getReservation(user_id);
-      this.getHotel();
+
     }
   }
   getHotel(){
@@ -245,6 +251,7 @@ class Customer extends Component {
           <Button type='submit' bsStyle='primary'>Update</Button>
         </Form>
         }
+        <Button bsStyle="warning" bsSize="large" style={{marginTop:'30px'}} onClick={()=>this.goBook()}>Book a room!</Button>
         {(!this.state.user_id  || !this.state.customer_info || !this.state.account_info) &&
           <div>
           no id

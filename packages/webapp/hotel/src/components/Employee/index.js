@@ -15,8 +15,11 @@ class Employee extends Component {
     this.getEmployee = this.getEmployee.bind(this);
     this.getAccount = this.getAccount.bind(this);
     this.getHotel = this.getHotel.bind(this);
+    this.seeReserve = this.seeReserve.bind(this);
   }
-
+  seeReserve(){
+    history.push('/all_reserve');
+  }
   getHotel(){
     let that = this;
     axios.get(api.hotel, api.headers)
@@ -149,6 +152,10 @@ class Employee extends Component {
           no id
         </div>
         }
+        <div>
+          <h3>Employee Tools</h3>
+          <Button bsStyle="primary" onClick={()=>this.seeReserve()}>See All Reservations</Button>
+        </div>
       </div>
 
     );

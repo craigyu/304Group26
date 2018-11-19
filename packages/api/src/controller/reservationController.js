@@ -1,5 +1,6 @@
 const { transaction, Model } = require('objection');
 const reservationModel = require('../model/reservationModel');
+const roomModel = require('../model/roomModel');
 const baseController = require('./baseController');
 
 
@@ -10,7 +11,9 @@ class reservationController extends baseController {
       let trx;
       try {
         trx = await transaction.start(Model.knex());
+        const room_id = req.body.room;
         await super.post(reservationModel ,req.body, trx);
+        await super.put(roomModel, room_id, {"availability": false}, trx);
         await trx.commit();
         res.sendStatus(201);
       } catch (error) {
@@ -21,6 +24,21 @@ class reservationController extends baseController {
         });
       }
     };
+  }
+
+  static getAllReservation(){
+    return async (req, res) => {
+      try {
+        const rows = await super.get(reservationModel);
+          res.status(200).send(rows);
+      }
+      catch (error) {
+        //handle more exceptions
+        res.status(400).json({
+          error,
+        });
+      }
+    }
   }
 
   static getReservationByUserID() {

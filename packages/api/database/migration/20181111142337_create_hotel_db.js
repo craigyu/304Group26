@@ -38,6 +38,7 @@ exports.up = async function(knex, Promise) {
 
       knex.schema.raw('CREATE TABLE "amenity" ' +
           '("amenity_id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(), ' +
+          '"hotel_id" uuid REFERENCES hotel(hotel_id), ' +
           '"opening" varchar(31), ' +
           '"closing" varchar(31), ' +
           '"rating" int, ' +

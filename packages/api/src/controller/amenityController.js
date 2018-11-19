@@ -23,11 +23,11 @@ class amenityController extends baseController {
     };
   }
 
-  static getUserByID() {
+  static getAmenityByHotelID() {
     return async (req, res) => {
       try {
-        const id = req.params.amenity_id;
-        const row = await super.getIndividual(amenityModel, id);
+        const id = req.params.id;
+        const row = await amenityModel.query().where('hotel_id', id);
         res.status(200).send(row);
       }
       catch (error) {

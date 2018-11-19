@@ -4,6 +4,8 @@ const reservationController = require('../controller/reservationController');
 
 router.get('/user/:id',  reservationController.getReservationByUserID());
 
+router.get('/',  reservationController.getAllReservation());
+
 router.post('/', reservationController.addReservation());
 
 router.put('/:id', reservationController.updateReservation());
