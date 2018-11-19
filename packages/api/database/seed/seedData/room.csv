@@ -1,4 +1,4 @@
-room_id,hotel_id,price,num_beds,max_guests,beds_type,availability,pets_allowed
+room_id,hotel_id,price,num_beds,max_guests,bed_type,availability,pets_allowed
 90379985-98d0-44ba-89c3-033f3a23faba,1808ddfe-64a8-495b-8806-fd1cd518420f,50,2,2,Twin,TRUE,TRUE
 f51befac-a84c-4a39-a165-40bcd32364a1,71fedfd4-4095-4d25-b2d8-882c1c7e7be9,120,1,2,King ,FALSE,FALSE
 c43d96b9-8855-43d3-a9f2-829f52b223f7,ce539b33-a609-4c66-9cf6-a5e1ec31f974,100,3,3,Single,FALSE,FALSE
