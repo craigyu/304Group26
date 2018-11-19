@@ -32,7 +32,7 @@ const initialEmployee = {
   password:'',
   position: '',
   hotel_id: '',
-  wage: '',
+  wage: 0,
 };
 
 const initialBooking = {

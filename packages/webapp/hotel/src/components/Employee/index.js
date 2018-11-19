@@ -17,6 +17,50 @@ class Employee extends Component {
     this.getHotel = this.getHotel.bind(this);
     this.goPage = this.goPage.bind(this);
     this.deleteAccount = this.deleteAccount.bind(this);
+    this.updateCEmployee = this.updateCEmployee.bind(this);
+    this.updateAccount = this.updateAccount.bind(this);
+  }
+
+  updateAccount(form){
+    let userForm = {
+      first_name: form.first_name,
+      last_name: form.last_name,
+      email: form.email,
+      address: form.address,
+      password: form.password,
+      is_customer: false,
+    };
+    let that = this;
+    let user_id = this.state.user_id;
+    axios.put(api.user + '/' + user_id, userForm, api.headers).then((res)=>{
+      if(res){
+        that.updateCEmployee(form, user_id)
+      }
+      else{
+        alert("failed to update account");
+      }
+    }).catch((err)=>{
+      console.error(err);
+      alert(JSON.stringify(err));
+    })
+  }
+
+
+  updateCEmployee(form, user_id){
+    let customerForm = {
+      user_id: user_id,
+      hotel_id: form.hotel_id,
+      position: form.position,
+      wage: parseInt(form.wage,10),
+    };
+    axios.put(api.employee + '/' + user_id, customerForm, api.headers).then(()=>{
+      alert("employee updated");
+      history.push('/employee');
+    }).catch((err)=>{
+      console.error(err);
+      alert(JSON.stringify(err));
+    })
+
   }
 
   deleteAccount(){
@@ -101,7 +145,7 @@ class Employee extends Component {
   }
 
   handleSubmit(form){
-    console.log(form);
+   this.updateAccount(form);
   }
 
   render() {
@@ -130,9 +174,9 @@ class Employee extends Component {
             <label>Address</label>
             <Control.text model=".employeeForm.address" defaultValue={account_info.address} />
           </div>
-          <div className={styles.labelContainer} defaultValue={employee_info.wage}>
+          <div className={styles.labelContainer} >
             <label>Wage</label>
-            <Control.text model=".employeeForm.wage" validators={{required: (val) => val.length}}  defaultValue={account_info.first_name}/>
+            <Control.text type="number" model=".employeeForm.wage"   defaultValue={employee_info.wage}/>
           </div>
           {this.state.hotel &&
           <div className={styles.selectContainer}>

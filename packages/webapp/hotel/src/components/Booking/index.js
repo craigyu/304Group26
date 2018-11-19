@@ -369,6 +369,24 @@ class Booking extends Component {
                                 {i.rating}
                               </div>
                             </div>
+                              <div className={styles.infoContainer}>
+                                <label>Bar:</label>
+                                <div>
+                                  {i.has_bar.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Cuisine:</label>
+                                <div>
+                                  {i.cuisine_type}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Budget:</label>
+                                <div>
+                                  {i.budget}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         })
@@ -398,6 +416,30 @@ class Booking extends Component {
                                 {i.rating}
                               </div>
                             </div>
+                              <div className={styles.infoContainer}>
+                                <label>Weights:</label>
+                                <div>
+                                  {i.has_weights.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Cardio:</label>
+                                <div>
+                                  {i.has_cardio.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Pool:</label>
+                                <div>
+                                  {i.has_pool.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Classes:</label>
+                                <div>
+                                  {i.has_class.toString()}
+                                </div>
+                              </div>
                           </div>
                           </div>
                         })
