@@ -129,7 +129,7 @@ class AddAmenity extends Component {
                 <Control.select model=".amenForm.hotel_id" defaultValue={this.state.hotel[0].hotel_id}>
                   {
                     this.state.hotel.map((h)=>{
-                      return <option key={h.hotel_id}  value={h.hotel_id}>{h.name}</option>
+                      return <option key={h.hotel_id} value={h.hotel_id}>{h.name}</option>
                     })
                   }
                 </Control.select>
@@ -158,7 +158,7 @@ class AddAmenity extends Component {
             </div>
             <div className={styles.labelContainer}>
               <label>Has hot tub?</label>
-              <Control.checkbox model=".amenForm.has_hot_tub" v/>
+              <Control.checkbox model=".amenForm.has_hot_tub" />
             </div>
             <div className={styles.labelContainer}>
               <label>Has tab bed?</label>

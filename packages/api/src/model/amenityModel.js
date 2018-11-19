@@ -20,6 +20,7 @@ class Amenity extends Model {
 
             properties: {
                 amenity_id: { type: 'string' },
+                hotel_id: {type: 'string'},
                 opening: { type: 'string', minLength: 1, maxLength: 31 },
                 closing: { type: 'string', minLength: 1, maxLength: 31 },
                 rating: { type: 'number'},

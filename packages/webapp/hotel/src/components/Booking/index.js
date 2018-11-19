@@ -286,10 +286,10 @@ class Booking extends Component {
                       </Button>
                     }
 
-                    <div style={{display:this.state.showSpa}}>
+                    <div style={{display:this.state.showSpa,flexDirection:'column'}}>
                       {
                         spaInfo && spaInfo.map((i)=>{
-                          return <div >
+                          return <div key={i.amenity_id}>
                             <h4>Info</h4>
                             <div className={styles.infoWrapper}>
                             <div className={styles.infoContainer}>
@@ -345,10 +345,10 @@ class Booking extends Component {
                         })
                       }
                     </div>
-                    <div style={{display:this.state.showRes}}>
+                    <div style={{display:this.state.showRes,flexDirection:'column'}}>
                       {
                         resInfo && resInfo.map((i)=>{
-                          return <div>
+                          return <div key={i.amenity_id}>
                             <h4>Info</h4>
                             <div className={styles.infoWrapper}>
                             <div className={styles.infoContainer}>
@@ -392,10 +392,10 @@ class Booking extends Component {
                         })
                       }
                     </div>
-                    <div style={{display:this.state.showGym}}>
+                    <div style={{display:this.state.showGym, flexDirection:'column'}}>
                       {
                         gymInfo && gymInfo.map((i)=>{
-                          return <div>
+                          return <div key={i.amenity_id}>
                             <h4>Info</h4>
                             <div className={styles.infoWrapper}>
                               <div className={styles.infoContainer}>
