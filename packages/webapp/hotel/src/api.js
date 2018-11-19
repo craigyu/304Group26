@@ -5,6 +5,9 @@ const api = {
   hotel: host + 'hotel',
   customer: host+ 'customer',
   employee: host + 'employee',
+  headers: {
+    'Content-Type': 'application/json'
+  },
 };
 
 module.exports = api;

@@ -4,6 +4,9 @@ import Home from "./components/Home";
 import history from './history'
 import Register from './components/Register'
 import RegisterAccount from './components/RegisterAccount'
+import Login from './components/Login'
+import Customer from './components/Customer'
+import Employee from './components/Employee'
 
 
 function Routes() {
@@ -13,6 +16,9 @@ function Routes() {
       <Route path="/" exact component={Home} />
       <Route path="/register" exact component={Register} />
       <Route path="/register_account" exact component={RegisterAccount} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/customer" exact component={Customer} />
+      <Route path="/employee" exact component={Employee} />
     </Switch>
     </Router>
   );

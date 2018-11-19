@@ -36,6 +36,22 @@ class userController extends baseController {
     }
   }
 
+  static getUserByEmail() {
+    return async (req, res) => {
+      try {
+        const id = req.params.id;
+        const row = await userModel.query().where('email', id);
+        if(!row.length){
+          res.sendStatus(404);
+        }
+        else res.status(200).send(row);
+      }
+      catch (error) {
+        res.status(400).send(error);
+      }
+    }
+  }
+
   static delUser() {
     return async (req, res) => {
       let trx;

@@ -26,8 +26,8 @@ class amenityController extends baseController {
   static getCustomerByID() {
     return async (req, res) => {
       try {
-        const id = req.params.amenity_id;
-        const row = await super.getIndividual(amenityModel, id);
+        const id = req.params.id;
+        const row = await super.getIndividual(customerModel, id);
         res.status(200).send(row);
       }
       catch (error) {

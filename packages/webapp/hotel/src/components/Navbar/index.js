@@ -20,7 +20,7 @@ class NavBar extends Component {
   render() {
 
     return (
-      <Navbar inverse collapseOnSelect style={{borderRadius: 0, marginBottom: 0, overflow: 'auto'}}>
+      <Navbar fixedTop inverse collapseOnSelect style={{borderRadius: 0, marginBottom: 0, overflow: 'auto'}}>
         <Navbar.Header>
           <Navbar.Brand>
             <a onClick={()=>{history.push('/')}}>Puny Budapest Hotel</a>

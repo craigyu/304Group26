@@ -26,14 +26,12 @@ class Home extends Component {
   }
 
   login(){
-    localStorage.setItem('isAuthenticated', 'true');
-    this.setState({
-      isAuthenticated: true,
-    })
+    history.push('/login')
   }
 
   logout(){
     localStorage.setItem('isAuthenticated', 'false');
+    localStorage.removeItem('user_id');
     this.setState({
       isAuthenticated: false,
     })

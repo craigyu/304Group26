@@ -26,8 +26,8 @@ class employeeController extends baseController {
   static getEmployeeByID() {
     return async (req, res) => {
       try {
-        const id = req.params.user_id;
-        const row = await super.getIndividual(employeeModel, user_id);
+        const id = req.params.id;
+        const row = await super.getIndividual(employeeModel, id);
         res.status(200).send(row);
       }
       catch (error) {

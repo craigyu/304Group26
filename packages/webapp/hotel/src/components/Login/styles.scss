@@ -1,0 +1,21 @@
+.inputContainer{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  input{
+    border: 1px solid #EFEFEF;
+    border-radius: 5px;
+    width: 60%;
+    color: #333;
+    padding: 0 5%;
+  }
+  p{
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 30%;
+  }
+
+}

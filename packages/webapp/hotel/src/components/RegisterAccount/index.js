@@ -54,10 +54,10 @@ class RegisterAccount extends Component {
     axios.post(api.customer, customerForm, header).then(()=>{
       localStorage.setItem('isAuthenticated', 'true');
       alert("customer created");
-      history.push('/');
+      history.push('/customer');
     }).catch((err)=>{
       console.error(err);
-      alert(err);
+      alert(JSON.stringify(err));
     })
   }
 
@@ -71,10 +71,10 @@ class RegisterAccount extends Component {
     axios.post(api.employee, employeeForm, header).then(()=>{
       localStorage.setItem('isAuthenticated', 'true');
       alert("employee created");
-      history.push('/');
+      history.push('/employee');
     }).catch((err)=>{
       console.error(err);
-      alert(err);
+      alert(JSON.stringify(err));
     })
   }
 
@@ -105,7 +105,7 @@ class RegisterAccount extends Component {
       }
     }).catch((err)=>{
       console.error(err);
-      alert(err);
+      alert(JSON.stringify(err));
     })
   }
 
