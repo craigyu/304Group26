@@ -28,6 +28,7 @@ exports.up = async function(knex, Promise) {
 
       knex.schema.raw('CREATE TABLE "room" ' +
           '("room_id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(), ' +
+          '"hotel_id" uuid REFERENCES hotel(hotel_id), ' +
           '"price" float(53), ' +
           '"num_beds" integer, ' +
           '"max_guests" integer, ' +
@@ -91,6 +92,7 @@ exports.up = async function(knex, Promise) {
 exports.down = function(knex, Promise) {
   //remove all the tables
   return Promise.all([
+
       knex.schema.dropTable('reservation'),
       knex.schema.dropTable('gym'),
       knex.schema.dropTable('spa'),

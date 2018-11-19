@@ -1,0 +1,11 @@
+id,first_name,last_name,email,address,is_customer,password,created_at,updated_at
+fa3a6109-88aa-4f6a-9eb9-9f243c61c58e,John,Hefferson,angelwings70@gmail.com,312 Mulberry lane,TRUE,12345,,
+9a374ade-25d6-4a64-b4be-f2169c5030e6,Dylan,Heisen,kittylover38@gmail.com,227 Honeysukkle ave,TRUE,1234567,,
+0267db00-52d6-4fb7-81c4-c2c75ecf0c88,Eaton,Heisens,soccerfan5001@gmail.com,123 Road dr,TRUE,password,,
+14adea89-acb2-4c1f-9332-0dffb978b52b,Ashley,Susan,wheresthebeer2@gmail.com,777 MapleWasp rd,TRUE,incorrect,,
+38b2073b-3e79-4aec-bb70-c72349e8bad6,Sidney,Whitenson,hamandcheese@gmail.com,299 PoliceStation ave,TRUE,1234578,,
+5b4623e1-3f59-4c8c-9533-be32127af410,Gregor,Kizcales,kfcforever@gmail.com,6968 Christmas rd,FALSE,1234567890,,
+86a4b925-c860-4fa8-8244-615faf79402a,Low,Baldson,burgerkingdude@gmail.com,4268 Happy st,FALSE,123,,
+f2b659f3-4b2e-4957-bf5e-6da1ba1c9ecd,High,Hairsome,colonelsanders@gmail.com,4267  Sad st,FALSE,pass,,
+f1774b09-34f5-4a2e-bef1-463782b1d143,Line,Stine,trickster778@gmail.com,9999 Hell st,FALSE,passwordsnot,,
+67b9ed5c-dbce-4d42-bff4-7373dab7fd91,Beff,Test,mynameidjeff@gmail.com,2329 WestMall ave,FALSE,notpassword,,
