@@ -1,12 +1,12 @@
-name,location
-Puny BudaVan Hotel,Vancouver
-Puny BudaRey Hotel,Surrey
-Puny BudaBy Hotel,Burnaby
-Puny BudaMond Hotel,Richmond
-Puny BudaLam Hotel,Coquitlam
-Puny BudaPort Hotel,Port Coquitlam
-Puny Budawna Hotel,Kelowna
-Puny BudapPrince Hotel,Prince George 
-Puny BudaRia Hotel,Victoria
-Puny BudaBella Hotel,Bella Coola 
-Puny Budapest Hotel,Budapest
+hotel_id,name,location
+1808ddfe-64a8-495b-8806-fd1cd518420f,Puny BudaVan Hotel,Vancouver
+71fedfd4-4095-4d25-b2d8-882c1c7e7be9,Puny BudaRey Hotel,Surrey
+ce539b33-a609-4c66-9cf6-a5e1ec31f974,Puny BudaBy Hotel,Burnaby
+9e0e7c56-9686-456a-a45e-b7458c77ef0f,Puny BudaMond Hotel,Richmond
+cc8edfd7-819a-4cc5-991b-a20b47fe15f2,Puny BudaLam Hotel,Coquitlam
+f6ba9019-aa94-4bde-aab2-8a12c523e80f,Puny BudaPort Hotel,Port Coquitlam
+0021f7f7-9072-47e4-8804-d84acbee77a7,Puny Budawna Hotel,Kelowna
+e87ac824-d1b7-4282-a0fc-318b6e0f9c36,Puny BudapPrinceHotel,Prince George 
+74ec26ed-1aec-4056-bc15-f64881597541,Puny BudaRia Hotel,Victoria
+95f539bf-2829-44b1-be25-38147e2946d0,Puny BudaBella Hotel,Bella Coola 
+4596e046-5fc3-434f-81dd-8e638cebd333,Puny Budapest Hotel,Budapest
