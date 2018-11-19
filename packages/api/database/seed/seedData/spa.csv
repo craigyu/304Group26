@@ -1,4 +1,4 @@
-amenity_id,has_massage,has_salon,has_hot_tub,has_tan_bed
+spa_id,has_massage,has_salon,has_hot_tub,has_tan_bed
 9141c79c-f8c0-418e-b0bc-dcb57ccda6d7,TRUE,TRUE,TRUE,TRUE
 e95b0e6e-43b4-4ab0-b7c4-bdf03f217f96,TRUE,FALSE,TRUE,FALSE
 c93455da-4894-4246-b3b6-9d5652a696d5,TRUE,TRUE,FALSE,TRUE

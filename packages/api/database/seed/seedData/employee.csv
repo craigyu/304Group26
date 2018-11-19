@@ -1,4 +1,4 @@
-user_id,hotel_id,position,wage
+emp_id,hotelID,position,wage
 5b4623e1-3f59-4c8c-9533-be32127af410,1808ddfe-64a8-495b-8806-fd1cd518420f,Cleaner,16.5
 5b4623e1-3f59-4c8c-9533-be32127af411,71fedfd4-4095-4d25-b2d8-882c1c7e7be9,Receptionist,14.5
 5b4623e1-3f59-4c8c-9533-be32127af412,ce539b33-a609-4c66-9cf6-a5e1ec31f974,Shift Leader,22

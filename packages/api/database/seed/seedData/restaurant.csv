@@ -1,4 +1,4 @@
-amenity_id,has_bar,cuisine_type,budget
+rest_id,has_bar,cuisine_type,budget
 d3fe285a-a2d5-42a7-aa08-887254e80950,TRUE,Korean,20
 c799bea0-bd6e-46ad-b251-8f0ea137425e,FALSE,Mexican,10
 6ee29243-61b4-41fc-be07-572f615969db,TRUE,Cubano,15

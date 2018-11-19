@@ -15,7 +15,7 @@ function insertCsvIntoTable(knex, tableName, fromFile) {
               resolve();
             });
           });
-      });
+     });
   });
 }
 
@@ -29,14 +29,12 @@ exports.seed = function (knex, Promise) {
       { tableName: 'hotel', fileName: BASEURL + 'hotel.csv' },
       { tableName: 'amenity', fileName: BASEURL + 'amenity.csv' },
       { tableName: 'employee', fileName: BASEURL + 'employee.csv'},
-      { tableName: 'customer', fileName: BASEURL + 'customer.csv' },
-      { tableName: 'spa', fileName: BASEURL + 'spa.csv'},
-      { tableName: 'gym', fileName: BASEURL + 'gym.csv'},
-      { tableName: 'restaurant', fileName: BASEURL + 'restaurant.csv' },
-      { tableName: 'room', fileName: BASEURL + 'room.csv' },
-      //{ tableName: 'reservation', fileName: BASEURL + 'reservation.csv' },
-
-
+      //{ tableName: 'room', fileName: BASEURL + 'room.csv' },
+      //{ tableName: 'customer', fileName: BASEURL + 'customer.csv' },
+      //{ tableName: 'spa', fileName: BASEURL + 'spa.csv'},
+      //{ tableName: 'gym', fileName: BASEURL + 'gym.csv'},
+      //{ tableName: 'restaurant', fileName: BASEURL + 'restaurant.csv' },
+      //{ tableName: 'reservation', fileName: BASEURL + 'reservation1.csv' },
 
   ];
   let migration = [];

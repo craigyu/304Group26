@@ -1,3 +1,3 @@
-amenity_id,has_weights,has_pool,has_class,has_cardio
+gym_id,has_weights,has_pool,has_class,has_cardio
 ac6f41e7-f49a-4bbf-a70c-561346cedabe,TRUE,FALSE,FALSE,FALSE
 ba6adf8a-648b-4f35-ab10-66e1abad3b2a,FALSE,TRUE,TRUE,TRUE

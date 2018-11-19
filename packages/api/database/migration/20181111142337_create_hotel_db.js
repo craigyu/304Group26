@@ -20,15 +20,15 @@ exports.up = async function(knex, Promise) {
           '"location" varchar(31) ) '),
 
       knex.schema.raw('CREATE TABLE "employee" ' +
-          '("user_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, ' +
-          '"hotel_id" uuid REFERENCES hotel(hotel_id), ' +
+          '("emp_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE , ' +
+          '"hotelID" uuid REFERENCES hotel(hotel_id), ' +
           '"position" char(31), ' +
           '"wage" float(53) )' ),
     // create whatever table here, and dont forget it change/add it to the exports.down function at the bottom
 
       knex.schema.raw('CREATE TABLE "room" ' +
           '("room_id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(), ' +
-          '"hotel_id" uuid REFERENCES hotel(hotel_id), ' +
+          '"hotel" uuid REFERENCES hotel(hotel_id), ' +
           '"price" float(53), ' +
           '"num_beds" integer, ' +
           '"max_guests" integer, ' +
@@ -44,20 +44,20 @@ exports.up = async function(knex, Promise) {
           '"type" varchar(31) ) '),
 
       knex.schema.raw('CREATE TABLE "restaurant" ' +
-          '("amenity_id" uuid PRIMARY KEY REFERENCES amenity(amenity_id), ' +
+          '("rest_id" uuid PRIMARY KEY REFERENCES amenity(amenity_id), ' +
           '"has_bar" bool default false, ' +
           '"cuisine_type" varchar(31), ' +
           '"budget" int )' ),
 
       knex.schema.raw('CREATE TABLE "spa" ' +
-          '("amenity_id" uuid PRIMARY KEY REFERENCES amenity(amenity_id), ' +
+          '("spa_id" uuid PRIMARY KEY REFERENCES amenity(amenity_id), ' +
           '"has_massage" bool default false, ' +
           '"has_salon" bool default false, ' +
           '"has_hot_tub" bool default false, ' +
           '"has_tan_bed" bool default false )' ),
 
       knex.schema.raw('CREATE TABLE "gym" ' +
-          '("amenity_id" uuid PRIMARY KEY REFERENCES amenity(amenity_id), ' +
+          '("gym_id" uuid PRIMARY KEY REFERENCES amenity(amenity_id), ' +
           '"has_weights" bool default false, ' +
           '"has_pool" bool default false, ' +
           '"has_class" bool default false, ' +
@@ -65,7 +65,7 @@ exports.up = async function(knex, Promise) {
 
     //add customer table
     knex.schema.raw('CREATE TABLE "customer" ' +
-      '("user_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, ' +
+      '("cust_id" uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, ' +
       '"expire_month" char(31), ' +
       '"expire_year" char(31), ' +
       '"card_number" char(31), ' +
@@ -76,15 +76,15 @@ exports.up = async function(knex, Promise) {
       // isCheckedIn:Bool, isCheckedOut:Bool, has.breakfast:Bool, num.guests:Integer, checkOutDate:Char, checkInDate:char)
       knex.schema.raw('CREATE TABLE "reservation" ' +
           '("reservation_id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(), ' +
-          '"user_id" uuid REFERENCES users(id) ON DELETE SET NULL, ' +
+          '"customer_id" uuid REFERENCES users(id),' +
           '"room" uuid REFERENCES room(room_id), ' +
           '"hotel" uuid REFERENCES hotel(hotel_id), ' +
           '"is_checked_in" bool default false, ' +
           '"is_checked_out" bool default false, ' +
           '"has_breakfast" bool default false, ' +
           '"num_guests" int, ' +
-          '"check_out_date" timestamptz not null, ' +
-          '"check_in_date" timestamptz not null )' )
+          '"check_in_date" timestamptz not null, ' +
+          '"check_out_date" timestamptz not null )' )
     ])
 
 };

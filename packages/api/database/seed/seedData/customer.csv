@@ -1,4 +1,4 @@
-user_id,expire_month,expire_year,card_number,cvc,payment_method
+cust_id,expire_month,expire_year,card_number,cvc,payment_method
 fa3a6109-88aa-4f6a-9eb9-9f243c61c58e,1,2021,4.72E+15,153,Credit
 9a374ade-25d6-4a64-b4be-f2169c5030e6,3,2022,4.92E+15,342,Debit
 0267db00-52d6-4fb7-81c4-c2c75ecf0c88,5,2019,4.49E+15,731,Credit
