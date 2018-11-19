@@ -26,7 +26,7 @@ class spaController extends baseController {
   static getSpaByID() {
     return async (req, res) => {
       try {
-        const id = req.params.amenity_id;
+        const id = req.params.id;
         const row = await super.getIndividual(spaModel, id);
         res.status(200).send(row);
       }

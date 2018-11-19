@@ -15,10 +15,25 @@ class Employee extends Component {
     this.getEmployee = this.getEmployee.bind(this);
     this.getAccount = this.getAccount.bind(this);
     this.getHotel = this.getHotel.bind(this);
-    this.seeReserve = this.seeReserve.bind(this);
+    this.goPage = this.goPage.bind(this);
+    this.deleteAccount = this.deleteAccount.bind(this);
   }
-  seeReserve(){
-    history.push('/all_reserve');
+
+  deleteAccount(){
+    if(window.confirm('Are you sure you want to delete?')){
+      axios.delete(api.user + '/' + this.state.user_id, api.headers).then((res)=>{
+        if(res){
+          localStorage.removeItem('isAuthenticated');
+          localStorage.removeItem('user_id');
+          alert('Deleted!');
+          history.push('/');
+        }
+      })
+
+    }
+  }
+  goPage(path){
+    history.push(path);
   }
   getHotel(){
     let that = this;
@@ -78,10 +93,10 @@ class Employee extends Component {
     // }
     const user_id = localStorage.getItem('user_id');
     if(user_id){
+      this.getHotel();
       this.setState({user_id});
       this.getAccount(user_id);
       this.getEmployee(user_id);
-      this.getHotel();
     }
   }
 
@@ -147,6 +162,7 @@ class Employee extends Component {
           <Button type='submit' bsStyle='primary'>Update</Button>
         </Form>
         }
+        <Button bsStyle="danger" bsSize="large" style={{marginTop:'30px'}} onClick={()=>this.deleteAccount()}>Delete account</Button>
         {(!this.state.user_id  || !account_info || !employee_info) &&
         <div>
           no id
@@ -154,7 +170,8 @@ class Employee extends Component {
         }
         <div>
           <h3>Employee Tools</h3>
-          <Button bsStyle="primary" onClick={()=>this.seeReserve()}>See All Reservations</Button>
+          <Button bsStyle="primary" style={{marginRight:'10px'}} onClick={()=>this.goPage('/all_reserve')}>See All Reservations</Button>
+          <Button bsStyle="primary" style={{marginRight:'10px'}} onClick={()=>this.goPage('/add_amenity')}>Add a Amenity</Button>
         </div>
       </div>
 

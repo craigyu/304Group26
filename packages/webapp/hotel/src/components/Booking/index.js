@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button} from 'react-bootstrap';
+import {Button, Glyphicon} from 'react-bootstrap';
 import styles from './styles.scss';
 import history from '../../history'
 import api from '../../api';
@@ -22,10 +22,22 @@ class Booking extends Component {
       startDate: startDate,
       endDate: endDate,
       focusedInput: null,
+      uniqueAmenities:[],
+      amenities: null,
+      showSpa: 'none',
+      showGym: 'none',
+      showRes: 'none',
+      resInfo: null,
+      gymInfo:null,
+      spaInfo:null,
     };
     this.getHotel = this.getHotel.bind(this);
     this.onDatesChange = this.onDatesChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
+    this.getAmenity = this.getAmenity.bind(this);
+    this.showInfo = this.showInfo.bind(this);
+    this.getSingleAmenity = this.getSingleAmenity.bind(this);
+
   }
 
   componentDidMount() {
@@ -33,6 +45,114 @@ class Booking extends Component {
     //   history.push('/')
     // }
     this.getHotel()
+
+  }
+
+  showInfo(type){
+
+    if(type ==='spa'){
+      this.setState({
+        showSpa: 'flex',
+        showGym: 'none',
+        showRes: 'none',
+
+      })
+    }
+    else if (type ==='gym'){
+      this.setState({
+        showSpa: 'none',
+        showGym: 'flex',
+        showRes: 'none',
+
+      })
+    }
+    else if (type ==='res'){
+      this.setState({
+        showSpa: 'none',
+        showGym: 'none',
+        showRes: 'flex',
+
+      })
+    }
+  }
+
+  async getSingleAmenity(){
+    const amens = this.state.amenities;
+    let gymInfo = [];
+    let resInfo = [];
+    let spaInfo=[];
+    for(let a of amens){
+      let type = a.type;
+      let result = await axios.get(api.host + type + '/' + a.amenity_id, api.headers);
+      if(result.data){
+          if(result.data.length>0){
+            if(type === 'gym'){
+               a = Object.assign(a, result.data[0]);
+
+              gymInfo.push(a);
+            }
+            else if(type === 'restaurant'){
+               a = Object.assign(a, result.data[0]);
+              resInfo.push(a);
+            }
+            else if(type === 'spa'){
+               a = Object.assign(a, result.data[0]);
+              spaInfo.push(a);
+            }
+          }
+      }
+      //.then((res)=>{
+
+      //   if(res.data.length>0){
+      //     if(type === 'gym'){
+      //        a = Object.assign(a, res.data[0]);
+      //
+      //       gymInfo.push(res.data[0]);
+      //     }
+      //     else if(type === 'restaurant'){
+      //        a = Object.assign(a, res.data[0]);
+      //       resInfo.push(res.data[0]);
+      //     }
+      //     else if(type === 'spa'){
+      //        a = Object.assign(a, res.data[0]);
+      //       spaInfo.push(res.data[0]);
+      //     }
+      //   }
+      // })
+    }
+    gymInfo = gymInfo.length <1 ? null : gymInfo;
+    resInfo = resInfo.length <1 ? null : resInfo
+    spaInfo = spaInfo.length <1 ? null : spaInfo
+
+    this.setState({
+        gymInfo,
+      resInfo,
+      spaInfo,
+    })
+  }
+
+  getAmenity(hotel_id){
+    let that = this;
+    axios.get(api.amenity + '/hotel/' + hotel_id, api.headers)
+      .then(function (response) {
+        // handle success
+        const data = response.data;
+
+        let a = [];
+        for(let d of data){
+          if(!a.includes(d.type)){
+            a.push(d.type);
+          }
+        }
+        that.setState({amenities: data, uniqueAmenities:a});
+        that.getSingleAmenity();
+      })
+      .catch(function (error) {
+        // handle error
+        alert(JSON.stringify(error));
+        console.error(error);
+      });
+
   }
 
   getHotel() {
@@ -86,14 +206,11 @@ class Booking extends Component {
       alert('failed to book');
     })
 
-
-
   }
 
   setHotel(option) {
-
     let hotel_id = option.target.value;
-
+    this.getAmenity(hotel_id);
     let that = this;
     axios.get(api.room + '/hotel/' + hotel_id , api.headers)
       .then(function (response) {
@@ -125,7 +242,7 @@ class Booking extends Component {
 
 // })
   render() {
-    const {hotel, rooms, selectedHotel} = this.state;
+    const {hotel, rooms, uniqueAmenities, gymInfo, resInfo, spaInfo} = this.state;
     return (
       <div className="default-container" style={{paddingTop: '12%'}}>
         {
@@ -141,6 +258,159 @@ class Booking extends Component {
                   })
                 }
               </Control.select>
+            </div>
+            <div>
+              {
+                uniqueAmenities.length>0 &&
+                  <div>
+                    <h4>Amenities</h4>
+                    {
+                      uniqueAmenities.includes('restaurant') &&
+                        <Button bsSize="large" style={{marginRight: "10px"}} onClick={()=>this.showInfo('res')}>
+                      <Glyphicon style={{width: "50px"}} glyph="cutlery"/>
+                          Restaurant
+                        </Button>
+                    }
+                    {
+                      uniqueAmenities.includes('spa') &&
+                      <Button bsSize="large" style={{marginRight: "10px"}} onClick={()=>this.showInfo('spa')}>
+                        <Glyphicon style={{width: "50px"}} glyph="eye-open"/>
+                        Spa
+                      </Button>
+                    }
+                    {
+                      uniqueAmenities.includes('gym') &&
+                      <Button bsSize="large" style={{marginRight: "10px"}} onClick={()=>this.showInfo('gym')}>
+                        <Glyphicon  glyph="scale"/>
+                        Gym
+                      </Button>
+                    }
+
+                    <div style={{display:this.state.showSpa}}>
+                      {
+                        spaInfo && spaInfo.map((i)=>{
+                          return <div >
+                            <h4>Info</h4>
+                            <div className={styles.infoWrapper}>
+                            <div className={styles.infoContainer}>
+                              <label>Open:</label>
+                              <div>
+                                {i.opening}
+                              </div>
+                            </div>
+                            <div className={styles.infoContainer}>
+                              <label>Close:</label>
+                              <div>
+                                {i.closing}
+                              </div>
+                            </div>
+                            <div className={styles.infoContainer}>
+                              <label>Rating:</label>
+                              <div>
+                                {i.rating}
+                              </div>
+                            </div>
+                              <div className={styles.infoContainer}>
+                                <label>Massage:</label>
+                                <div>
+                                  {i.has_massage.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Massage:</label>
+                                <div>
+                                  {i.has_massage.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Salon:</label>
+                                <div>
+                                  {i.has_salon.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Hot Tub:</label>
+                                <div>
+                                  {i.has_hot_tub.toString()}
+                                </div>
+                              </div>
+                              <div className={styles.infoContainer}>
+                                <label>Tanning:</label>
+                                <div>
+                                  {i.has_tan_bed.toString()}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        })
+                      }
+                    </div>
+                    <div style={{display:this.state.showRes}}>
+                      {
+                        resInfo && resInfo.map((i)=>{
+                          return <div>
+                            <h4>Info</h4>
+                            <div className={styles.infoWrapper}>
+                            <div className={styles.infoContainer}>
+                              <label>Open:</label>
+                              <div>
+                                {i.opening}
+                              </div>
+                            </div>
+                            <div className={styles.infoContainer}>
+                              <label>Close:</label>
+                              <div>
+                                {i.closing}
+                              </div>
+                            </div>
+                            <div className={styles.infoContainer}>
+                              <label>Rating:</label>
+                              <div>
+                                {i.rating}
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                        })
+                      }
+                    </div>
+                    <div style={{display:this.state.showGym}}>
+                      {
+                        gymInfo && gymInfo.map((i)=>{
+                          return <div>
+                            <h4>Info</h4>
+                            <div className={styles.infoWrapper}>
+                              <div className={styles.infoContainer}>
+                              <label>Open:</label>
+                              <div>
+                                {i.opening}
+                              </div>
+                            </div>
+                              <div className={styles.infoContainer}>
+                              <label>Close:</label>
+                              <div>
+                                {i.closing}
+                              </div>
+                            </div>
+                              <div className={styles.infoContainer}>
+                              <label>Rating:</label>
+                              <div>
+                                {i.rating}
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        })
+                      }
+                    </div>
+                  </div>
+
+
+              }
+              {
+                !uniqueAmenities.length &&
+                <h4>No amenity</h4>
+              }
             </div>
             <div>
               <label>Available Rooms</label>

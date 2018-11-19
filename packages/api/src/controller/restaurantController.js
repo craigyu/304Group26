@@ -26,7 +26,7 @@ class restaurantController extends baseController {
   static getRestaurantByID() {
     return async (req, res) => {
       try {
-        const id = req.params.amenity_id;
+        const id = req.params.id;
         const row = await super.getIndividual(restaurantModel, id);
         res.status(200).send(row);
       }

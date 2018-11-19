@@ -28,7 +28,7 @@ class roomController extends baseController {
       try {
         const id = req.params.id;
         //const row = await super.getIndividual(roomModel, id);
-        const row = await roomModel.query().where('hotel_id', id);
+        const row = await roomModel.query().where('hotel_id', id).andWhere('availability', true);
         res.status(200).send(row);
       }
       catch (error) {

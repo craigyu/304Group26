@@ -14,11 +14,15 @@ class Home extends Component {
   }
 
   componentDidMount(){
-    if(localStorage.getItem('isAuthenticated').toString() === 'true'){
-      this.setState({
-        isAuthenticated: true,
-      })
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if(isAuthenticated){
+      if(isAuthenticated === 'true'){
+        this.setState({
+          isAuthenticated: true,
+        })
+      }
     }
+
   }
 
   goRegister(){

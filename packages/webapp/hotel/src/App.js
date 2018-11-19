@@ -42,6 +42,25 @@ const initialBooking = {
   has_breakfast: false,
 };
 
+const initialAmen = {
+  hotel_id: '',
+  opening: '',
+  closing: 0,
+  rating: 0,
+  has_massage: false,
+  has_salon: false,
+  has_hot_tub: false,
+  has_tab_bed: false,
+  has_weights: false,
+  has_pool: false,
+  has_class: false,
+  has_cardio: false,
+  has_bar: false,
+  cuisine_type: '',
+  budget: 0,
+
+};
+
 const reducer = combineReducers({
   registerReducer,
   customerForm: combineForms({
@@ -53,6 +72,9 @@ const reducer = combineReducers({
   bookForm: combineForms({
     bookForm: initialBooking,
   }, 'bookForm'),
+  amenForm: combineForms({
+    amenForm: initialAmen,
+  }, 'amenForm'),
 });
 const store = createStore(
   reducer,

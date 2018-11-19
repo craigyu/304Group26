@@ -83,7 +83,7 @@ class reservationController extends baseController {
       let trx;
       try {
         trx = await transaction.start(Model.knex());
-        const updated = await super.put(reservationModel, req.params.res_id, req.body, trx);
+        const updated = await super.put(reservationModel, req.params.id, req.body, trx);
         await trx.commit();
         if (!updated) {
           res.sendStatus(404);

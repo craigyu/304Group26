@@ -19,9 +19,10 @@ class AllReserve extends Component {
   componentDidMount(){
     const user_id = localStorage.getItem('user_id');
     if(user_id){
+      this.getHotel();
       this.setState({user_id});
       this.getReservation(user_id);
-      this.getHotel();
+
     }
   }
 
@@ -42,11 +43,14 @@ class AllReserve extends Component {
 
   getHotelName(id){
     const hotels = this.state.hotel;
-    for(let h of hotels){
-      if (h.hotel_id ===id){
-        return h.name;
+    if(hotels){
+      for(let h of hotels){
+        if (h.hotel_id ===id){
+          return h.name;
+        }
       }
     }
+
     return 'NO HOTEL FOUND'
   }
 

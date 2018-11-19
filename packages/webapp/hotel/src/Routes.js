@@ -9,6 +9,7 @@ import Customer from './components/Customer'
 import Employee from './components/Employee'
 import Booking from './components/Booking'
 import AllReserve from './components/AllReserve'
+import AddAmenity from './components/AddAmenity'
 
 
 function Routes() {
@@ -23,6 +24,7 @@ function Routes() {
       <Route path="/employee" exact component={Employee} />
       <Route path="/booking" exact component={Booking} />
       <Route path="/all_reserve" exact component={AllReserve} />
+      <Route path="/add_amenity" exact component={AddAmenity} />
     </Switch>
     </Router>
   );

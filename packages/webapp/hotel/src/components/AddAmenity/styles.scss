@@ -1,3 +1,9 @@
+.buttonContainer{
+  button{
+    margin-right: 20px;
+  }
+  margin-bottom: 30px;
+}
 .labelContainer{
   display: flex;
   flex-direction: row;
@@ -6,6 +12,7 @@
   margin-bottom: 3%;
   align-items: center;
   margin-top: 2%;
+
 
   label{
     font-size:1.2em;
@@ -51,20 +58,4 @@
     height: 40px;
   }
 
-}
-
-.infoWrapper{
-  display:flex;
-  flex-direction: row;
-  width: 90%;
-  padding: 0 10%;
-  justify-content: space-between;
-  label{
-    width: auto;
-  }
-}
-.infoContainer{
-  display:flex;
-  flex-direction: row;
-  margin: 0 10px;
 }

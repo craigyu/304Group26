@@ -20,8 +20,8 @@ class Amenity extends Model {
 
             properties: {
                 amenity_id: { type: 'string' },
-                opening: { type: 'string', minLength: 3, maxLength: 31 },
-                closing: { type: 'string', minLength: 5, maxLength: 31 },
+                opening: { type: 'string', minLength: 1, maxLength: 31 },
+                closing: { type: 'string', minLength: 1, maxLength: 31 },
                 rating: { type: 'number'},
                 type: { type: 'string', enum: ["spa", "gym", "restaurant" ] }
             },

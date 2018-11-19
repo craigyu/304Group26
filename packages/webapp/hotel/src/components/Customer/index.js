@@ -21,10 +21,65 @@ class Customer extends Component {
     this.getHotel = this.getHotel.bind(this);
     this.getHotelName = this.getHotelName.bind(this);
     this.goBook=this.goBook.bind(this);
+    this.deleteAccount = this.deleteAccount.bind(this);
+    this.handleCheckInOut=this.handleCheckInOut.bind(this);
   }
 
   goBook(){
     history.push('/booking')
+  }
+
+  handleCheckInOut(info){
+    let id = info.reservation_id;
+    let obj;
+    let that = this;
+    for(let r of this.state.reservations){
+      if(r.reservation_id === id){
+        obj = r;
+      }
+    }
+    if(!info.is_checked_in && obj){
+      if(window.confirm('Check in?')){
+        obj.is_checked_in=true;
+        axios.put(api.reservation + '/' + id, obj, api.headers).then((res)=>{
+          if(res){
+            alert('checked in!');
+            history.push('/customer');
+          }
+        }).catch((err)=>{
+          alert('error');
+          console.error(err);
+        })
+      }
+    }
+    else if(!info.is_checked_out && obj) {
+      if (window.confirm('Check out?')) {
+        obj.is_checked_out = true;
+        axios.put(api.reservation + '/' + id, obj, api.headers).then((res) => {
+          if (res) {
+            alert('checked out!');
+            history.push('/customer');
+          }
+        }).catch((err) => {
+          alert('error');
+          console.error(err);
+        })
+      }
+    }
+
+  }
+  deleteAccount(){
+    if(window.confirm('Are you sure you want to delete?')){
+      axios.delete(api.user + '/' + this.state.user_id, api.headers).then((res)=>{
+        if(res){
+          localStorage.removeItem('isAuthenticated');
+          localStorage.removeItem('user_id');
+          alert('Deleted!');
+          history.push('/');
+        }
+      })
+
+    }
   }
 
   getReservation(user_id){
@@ -252,6 +307,7 @@ class Customer extends Component {
         </Form>
         }
         <Button bsStyle="warning" bsSize="large" style={{marginTop:'30px'}} onClick={()=>this.goBook()}>Book a room!</Button>
+        <Button bsStyle="danger" bsSize="large" style={{marginTop:'30px'}} onClick={()=>this.deleteAccount()}>Delete account</Button>
         {(!this.state.user_id  || !this.state.customer_info || !this.state.account_info) &&
           <div>
           no id
@@ -268,19 +324,19 @@ class Customer extends Component {
               showPagination={false}
               minRows={5}
               className="-striped -highlight"
-              // getTdProps={(state, rowInfo, column, instance) => {
-              //   return {
-              //     onClick: (e, handleOriginal) => {
-              //       if(rowInfo && rowInfo.original){
-              //         this.props.dispatch(setSelectedShift(rowInfo.original));
-              //         history.push('/my_shift');
-              //       }
-              //       if (handleOriginal) {
-              //         handleOriginal();
-              //       }
-              //     }
-              //   };
-              // }}
+              getTdProps={(state, rowInfo, column, instance) => {
+                return {
+                  onClick: (e, handleOriginal) => {
+                    if(rowInfo && rowInfo.original){
+                      this.handleCheckInOut(rowInfo.original)
+                    }
+                    if (handleOriginal) {
+                      handleOriginal();
+                    }
+                  }
+                };
+              }}
+
             />
           </div>
         }

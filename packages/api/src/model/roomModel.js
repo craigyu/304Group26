@@ -16,7 +16,7 @@ class Room extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['room_id', 'price', 'max_guests', 'num_beds'],
+            required: [],
 
             properties: {
                 room_id: { type: 'string' },
