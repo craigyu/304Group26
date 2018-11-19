@@ -20,7 +20,7 @@ code {
   overflow: auto;
   color: #fff;
   background: #373635;
-  padding: 0 10%;
+  padding: 10vh 10% 0 10%;
   flex-direction: column;
 }
 .default-container h1{

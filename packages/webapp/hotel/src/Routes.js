@@ -7,6 +7,7 @@ import RegisterAccount from './components/RegisterAccount'
 import Login from './components/Login'
 import Customer from './components/Customer'
 import Employee from './components/Employee'
+import Booking from './components/Booking'
 
 
 function Routes() {
@@ -19,6 +20,7 @@ function Routes() {
       <Route path="/login" exact component={Login} />
       <Route path="/customer" exact component={Customer} />
       <Route path="/employee" exact component={Employee} />
+      <Route path="/booking" exact component={Booking} />
     </Switch>
     </Router>
   );

@@ -65,7 +65,7 @@ class RegisterAccount extends Component {
     let employeeForm = {
       user_id: user_id,
       hotel_id: form.hotel_id,
-      position: form.position,
+      position: form.position.trim(),
       wage: parseFloat(form.wage),
     };
     axios.post(api.employee, employeeForm, header).then(()=>{
@@ -80,9 +80,9 @@ class RegisterAccount extends Component {
 
   handleSubmit(form, is_customer){
     let userFrom = {
-      first_name: form.first_name,
-      last_name: form.last_name,
-      email: form.email,
+      first_name: form.first_name.trim(),
+      last_name: form.last_name.trim(),
+      email: form.email.trim(),
       address: form.address,
       password: form.password,
       is_customer: is_customer,

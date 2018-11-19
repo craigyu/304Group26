@@ -26,6 +26,7 @@ exports.seed = function (knex, Promise) {
   let BASEURL = __dirname + '/seedData/';
   let seeds = [
     { tableName: 'hotel', fileName: BASEURL + 'hotel.csv' },
+    //{ tableName: 'room', fileName: BASEURL + 'room.csv' },
   ];
   let migration = [];
 
@@ -33,6 +34,8 @@ exports.seed = function (knex, Promise) {
     // console.log("Table name:"+seed.tableName + " File name:"+seed.fileName);
     migration.push(insertCsvIntoTable(knex, seed.tableName, seed.fileName))
   });
+
+
 
   return Promise.all(migration).then(() => {
 

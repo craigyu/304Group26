@@ -23,11 +23,12 @@ class reservationController extends baseController {
     };
   }
 
-  static getReservationByID() {
+  static getReservationByUserID() {
     return async (req, res) => {
       try {
-        const id = req.params.res_id;
-        const row = await super.getIndividual(reservationModel, id);
+        const id = req.params.id;
+        //const row = await super.getIndividual(reservationModel, id);
+        const row = await reservationModel.query().where('user_id', id);
         res.status(200).send(row);
       }
       catch (error) {

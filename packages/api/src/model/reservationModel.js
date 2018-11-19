@@ -7,7 +7,7 @@ class Reservation extends Model {
     }
 
     static get idColumn() {
-        return 'res_id';
+        return 'reservation_id';
     }
 
     // Optional JSON schema. This is not the database schema! Nothing is generated
@@ -16,13 +16,13 @@ class Reservation extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['res_id', 'user_id', 'room_id', 'hotel_id'],
+            required: ['user_id', 'room', 'hotel', 'check_in_date', 'check_out_date', 'num_guests'],
 
             properties: {
-                res_id: { type: 'string' },
+                reservation_id: { type: 'string' },
                 user_id: { type: 'string' },
-                room_id: { type: 'string' },
-                hotel_id: { type: 'string' },
+                room: { type: 'string' },
+                hotel: { type: 'string' },
                 is_checked_in: { type: 'boolean' },
                 is_checked_out: { type: 'boolean' },
                 has_breakfast: { type: 'boolean' },

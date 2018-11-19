@@ -23,11 +23,12 @@ class roomController extends baseController {
     };
   }
 
-  static getUserByID() {
+  static getRoomByHotelID() {
     return async (req, res) => {
       try {
         const id = req.params.id;
-        const row = await super.getIndividual(roomModel, id);
+        //const row = await super.getIndividual(roomModel, id);
+        const row = await roomModel.query().where('hotel_id', id);
         res.status(200).send(row);
       }
       catch (error) {

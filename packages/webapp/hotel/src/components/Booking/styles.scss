@@ -1,0 +1,54 @@
+.labelContainer{
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  align-items: center;
+  margin-top: 2%;
+
+  label{
+    font-size:1.2em;
+    width:40%;
+  }
+
+  input{
+    width: 50%;
+    margin-left: 5%;
+    padding: 0 1%;
+    border: 1px solid #CECCCC;
+    border-radius: 8px;
+    height: 40px;
+    color: #333;
+
+  }
+}
+
+.selectContainer{
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  label{
+    font-size:1.2em;
+    width: 40%;
+  }
+  select {
+    background: #FFF;
+    border: none;
+    padding: 2px;
+    border-radius: 5px;
+    height: 40px;
+    color: #333;
+  }
+  input{
+    width: 50%;
+    margin-right: 5%;
+    padding: 0 3%;
+    border: 1px solid #CECCCC;
+    border-radius: 8px;
+    height: 40px;
+  }
+
+}

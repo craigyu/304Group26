@@ -6,6 +6,9 @@ import {Provider} from "react-redux";
 import {createStore, combineReducers} from 'redux'
 import registerReducer from './components/Register/reducer'
 import {combineForms} from 'react-redux-form';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-table/react-table.css'
 
 
 const initialCustomer = {
@@ -32,6 +35,13 @@ const initialEmployee = {
   wage: '',
 };
 
+const initialBooking = {
+  hotel_id: '',
+  room_id: '',
+  num_guests: 0,
+  has_breakfast: false,
+};
+
 const reducer = combineReducers({
   registerReducer,
   customerForm: combineForms({
@@ -40,6 +50,9 @@ const reducer = combineReducers({
   employeeForm: combineForms({
     employeeForm: initialEmployee,
   }, 'employeeForm'),
+  bookForm: combineForms({
+    bookForm: initialBooking,
+  }, 'bookForm'),
 });
 const store = createStore(
   reducer,
