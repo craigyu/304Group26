@@ -37,7 +37,31 @@ class Booking extends Component {
     this.getAmenity = this.getAmenity.bind(this);
     this.showInfo = this.showInfo.bind(this);
     this.getSingleAmenity = this.getSingleAmenity.bind(this);
+    this.getRooms = this.getRooms.bind(this);
+  }
 
+  getRooms(form){
+    console.log(form);
+    // let num_guest = form.num_guests;
+    // let that = this;
+    // let hotel_id = form.hotel_id;
+    // axios.get(api.room + '/hotel/' + hotel_id +'/' + num_guest.toString(), api.headers)
+    //   .then(function (response) {
+    //     // handle success
+    //     const data = response.data;
+    //     if(data.length > 0){
+    //       that.setState({rooms: data});
+    //     }
+    //     else{
+    //       that.setState({rooms: null});
+    //       that.props.dispatch(actions.change('bookForm.bookForm.room_id', ''));
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     alert(JSON.stringify(error));
+    //     console.error(error);
+    //   })
   }
 
   componentDidMount() {
@@ -101,24 +125,6 @@ class Booking extends Component {
             }
           }
       }
-      //.then((res)=>{
-
-      //   if(res.data.length>0){
-      //     if(type === 'gym'){
-      //        a = Object.assign(a, res.data[0]);
-      //
-      //       gymInfo.push(res.data[0]);
-      //     }
-      //     else if(type === 'restaurant'){
-      //        a = Object.assign(a, res.data[0]);
-      //       resInfo.push(res.data[0]);
-      //     }
-      //     else if(type === 'spa'){
-      //        a = Object.assign(a, res.data[0]);
-      //       spaInfo.push(res.data[0]);
-      //     }
-      //   }
-      // })
     }
     gymInfo = gymInfo.length <1 ? null : gymInfo;
     resInfo = resInfo.length <1 ? null : resInfo

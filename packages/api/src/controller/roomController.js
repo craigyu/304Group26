@@ -1,10 +1,6 @@
 const { transaction, Model } = require('objection');
 const roomModel = require('../model/roomModel');
 const baseController = require('./baseController');
-const Knex = require('knex');
-const environment = process.env.NODE_ENV || 'development';
-const config = require('../../knexfile')[environment];
-const knex = Knex(config);
 
 
 class roomController extends baseController {
@@ -47,20 +43,8 @@ class roomController extends baseController {
       try {
         const id = req.params.id;
         const max = parseInt(req.params.num, 10);
-
         //const row = await super.getIndividual(roomModel, id);
-        //const row = await roomModel.query().where('hotel_id', id).andWhere('availability', true);
-        const row = await knex.raw(
-          'SELECT room_id, bed_type, max_guests, allowed_pet, availability' +
-	        'FROM room AS A;' +
-	        'WHERE NOT EXISTS (' +
-	        'SELECT * ' +
-	        'FROM room AS BT;' +
-	        'WHERE NOT EXISTS('+
-	        'SELECT *'+
-	        'FROM room'
-          + 'WHERE A.numbeds >= ' + max.toString() + '))' + 'AND WHERE A.hotel_id = ' + id,
-        );
+        const row = await roomModel.query().where('hotel_id', id).andWhere('availability', true).andWhere('max_guests', '>=', max);
         res.status(200).send(row);
       }
       catch (error) {
